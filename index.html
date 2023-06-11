@@ -190,8 +190,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:35:37" itemprop="dateModified" datetime="2023-06-11T20:35:37+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:37:31" itemprop="dateModified" datetime="2023-06-11T21:37:31+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+                </span>
+            </span>
 
           
 
@@ -204,8 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>标签: [C语言,程序]<br>categories: [C语言]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int *newdigit;</span><br><span class="line">int* plusOne(int* digits, int digitsSize, int* returnSize)&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    *returnSize = digitsSize;</span><br><span class="line">    for(i = digitsSize-1;i&gt;=0;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        if(digits[i] != 9)</span><br><span class="line">        &#123;</span><br><span class="line">            digits[i] = digits[i] +1;</span><br><span class="line">            return digits;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            digits[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = digitsSize+1;</span><br><span class="line">    $$$$$</span><br><span class="line">   //int newdigit[digitsSize+1];</span><br><span class="line">   newdigit = (int*)malloc(sizeof(int) * (*returnSize));	</span><br><span class="line">   $$$$$$</span><br><span class="line">   因为这是一个被调用的外部函数，所以如果用上面int newdigit[digitsSize+1]的方式生成一个数组，他就会在这个函数调用结束后被系统清除掉，导致返回的是一个空数组。而使用malloc，因为是在内存中直接进行操作，所以这个数组（其实是一块内存空间）不会随着函数的消失而消失！</span><br><span class="line">   $$$$$$</span><br><span class="line">    newdigit[0] = 1;</span><br><span class="line">    for(i = 0;i&lt;digitsSize;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        newdigit[i+1] = digits[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return newdigit;</span><br><span class="line">    /*newdigit = (int*)malloc(sizeof(int) * (*returnSize));	</span><br><span class="line">    memset(newdigit, 0, sizeof(int) * (*returnSize));</span><br><span class="line">    newdigit[0] = 1;</span><br><span class="line">    return newdigit;*/		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int *newdigit;</span><br><span class="line">int* plusOne(int* digits, int digitsSize, int* returnSize)&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    *returnSize = digitsSize;</span><br><span class="line">    for(i = digitsSize-1;i&gt;=0;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        if(digits[i] != 9)</span><br><span class="line">        &#123;</span><br><span class="line">            digits[i] = digits[i] +1;</span><br><span class="line">            return digits;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            digits[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = digitsSize+1;</span><br><span class="line">    $$$$$</span><br><span class="line">   //int newdigit[digitsSize+1];</span><br><span class="line">   newdigit = (int*)malloc(sizeof(int) * (*returnSize));	</span><br><span class="line">   $$$$$$</span><br><span class="line">   因为这是一个被调用的外部函数，所以如果用上面int newdigit[digitsSize+1]的方式生成一个数组，他就会在这个函数调用结束后被系统清除掉，导致返回的是一个空数组。而使用malloc，因为是在内存中直接进行操作，所以这个数组（其实是一块内存空间）不会随着函数的消失而消失！</span><br><span class="line">   $$$$$$</span><br><span class="line">    newdigit[0] = 1;</span><br><span class="line">    for(i = 0;i&lt;digitsSize;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        newdigit[i+1] = digits[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return newdigit;</span><br><span class="line">    /*newdigit = (int*)malloc(sizeof(int) * (*returnSize));	</span><br><span class="line">    memset(newdigit, 0, sizeof(int) * (*returnSize));</span><br><span class="line">    newdigit[0] = 1;</span><br><span class="line">    return newdigit;*/		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -255,8 +263,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:19:21" itemprop="dateModified" datetime="2023-06-11T20:19:21+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:38:17" itemprop="dateModified" datetime="2023-06-11T21:38:17+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+                </span>
+            </span>
 
           
 
@@ -269,8 +286,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>tags: [C语言,程序]<br>categories: [C语言]</p>
-<p>链表的相关操作</p>
+          <p>链表的相关操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;malloc.h&gt;</span><br><span class="line">struct node&#123;</span><br><span class="line">int value;</span><br><span class="line">struct node * next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">typedef struct node NODE;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">NODE* createlink(int nsize)</span><br><span class="line">&#123;</span><br><span class="line">    if(nsize&lt;1)</span><br><span class="line">    &#123;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    NODE * head,*previous,*current;</span><br><span class="line">    head = malloc(sizeof(NODE));</span><br><span class="line">    head -&gt;value = 10;</span><br><span class="line">    head -&gt;next = NULL;</span><br><span class="line"></span><br><span class="line">    int i;</span><br><span class="line">    previous = head;</span><br><span class="line">    for(i = 0;i&lt;nsize;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        current = malloc(sizeof(NODE));</span><br><span class="line">        current -&gt;value = (i+1)*10;</span><br><span class="line">        current -&gt;next = NULL;</span><br><span class="line">    </span><br><span class="line">        previous -&gt;next = current;</span><br><span class="line">        previous = current;</span><br><span class="line">    &#125;</span><br><span class="line">    return head;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void display(NODE * head)</span><br><span class="line">&#123;</span><br><span class="line">    if(head == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;空\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    NODE * pNODE;</span><br><span class="line">    int i = 1;</span><br><span class="line">    for(pNODE = head;pNODE != NULL;pNODE = pNODE -&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;NO:%d--address:%p,value:%4d,next:%p\n&quot;,</span><br><span class="line">               i,pNODE,pNODE-&gt;value,pNODE-&gt;next);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">NODE * putin(NODE * head,int newnumber)</span><br><span class="line">&#123;</span><br><span class="line">    if(head == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;空\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    NODE * newnode;</span><br><span class="line">    NODE * current; NODE * front;</span><br><span class="line">    for( front = NULL,current = head;</span><br><span class="line">    current-&gt;next != NULL;</span><br><span class="line">    front = current,current = current-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        if(current-&gt;value &gt;= newnumber &amp;&amp; front-&gt;value &lt;=newnumber)</span><br><span class="line">        &#123;</span><br><span class="line">            newnode = malloc(sizeof(NODE));</span><br><span class="line">            newnode-&gt;next = current;</span><br><span class="line">            newnode-&gt;value = newnumber;</span><br><span class="line">            front-&gt;next = newnode;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">NODE * deletenum(int deletenumber,NODE * head)</span><br><span class="line">&#123;</span><br><span class="line">    if(head == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;空\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    NODE * current;</span><br><span class="line">    NODE * front;</span><br><span class="line">    for(front = NULL,current = head;</span><br><span class="line">    current-&gt;next != NULL;</span><br><span class="line">    front = current,current = current-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        if(current-&gt;value == deletenumber)</span><br><span class="line">        &#123;</span><br><span class="line">            front-&gt;next = current-&gt;next;</span><br><span class="line">            free(current);</span><br><span class="line">            current = front-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void selectnum(int selectnumber,NODE * head)</span><br><span class="line">&#123;</span><br><span class="line">    if(head == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;空\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    NODE * current;</span><br><span class="line">    NODE * front;</span><br><span class="line">    int flag = 0;</span><br><span class="line">    for(front = NULL,current = head;</span><br><span class="line">    current-&gt;next != NULL;</span><br><span class="line">    front = current,current = current-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        if(current-&gt;value == selectnumber)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%p , %d is here.&quot;,current,selectnumber);</span><br><span class="line">            flag = 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(!flag)</span><br><span class="line">    printf(&quot;%d does not exist.&quot;,selectnumber);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int k;</span><br><span class="line">    printf(&quot;Êý×é³¤¶È£¿\n\n&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;k);</span><br><span class="line">    </span><br><span class="line">    NODE * pNODE;</span><br><span class="line">    </span><br><span class="line">    pNODE = createlink(k);//创建</span><br><span class="line">    </span><br><span class="line">    printf(&quot;\n\n$$\n\n&quot;);</span><br><span class="line">    display(pNODE);//打印</span><br><span class="line">    </span><br><span class="line">    int newnumber;</span><br><span class="line">    printf(&quot;\nwhich number you want to add in?\n&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;newnumber);</span><br><span class="line">    pNODE = putin(pNODE,newnumber);//插入</span><br><span class="line">    </span><br><span class="line">    printf(&quot;\n\n$$\n\n&quot;);</span><br><span class="line">    display(pNODE);</span><br><span class="line">    </span><br><span class="line">    int deletenumber;//删除</span><br><span class="line">    printf(&quot;\nwhich number you want to delete?\n&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;deletenumber);</span><br><span class="line">    pNODE =  deletenum(deletenumber,pNODE);</span><br><span class="line">    </span><br><span class="line">    printf(&quot;\n\n$$\n\n&quot;);</span><br><span class="line">    display(pNODE);</span><br><span class="line">    </span><br><span class="line">      int selectnumber;//查找</span><br><span class="line">    printf(&quot;\nwhich number you want to select?\n&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;selectnumber);</span><br><span class="line">    selectnum(selectnumber,pNODE);</span><br><span class="line">    </span><br><span class="line">    printf(&quot;\n\n$$\n\n&quot;);</span><br><span class="line">    display(pNODE);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -321,8 +337,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-01 20:26:07" itemprop="dateModified" datetime="2021-12-01T20:26:07+08:00">2021-12-01</time>
+                <time title="修改时间：2023-06-11 21:40:37" itemprop="dateModified" datetime="2023-06-11T21:40:37+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+                </span>
+            </span>
 
           
 
@@ -386,8 +411,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:19:40" itemprop="dateModified" datetime="2023-06-11T20:19:40+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:36:36" itemprop="dateModified" datetime="2023-06-11T21:36:36+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+                </span>
+            </span>
 
           
 
@@ -400,82 +434,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>tags: [C语言,程序]<br>categories: [C语言]</p>
-<p>对变量A进行sizeof运算：sizeof A;<br>对数据类型’int”进行sizzeof运算：sizeof（int） &#x3D; 4（字节）；</p>
+          <p>对变量A进行sizeof运算：sizeof A;<br>对数据类型’int”进行sizzeof运算：sizeof（int） &#x3D; 4（字节）；</p>
 <p>指针的用法：<br>    声明一个指针变量：int <em>tpr;<br>    声明一个变量A：int A；<br>    将指针指向A的地址：tpr &#x3D; &amp;A；<br>     输出A的地址：printf（”%p“，tpr）；<br>     输出A储存的值：print发（”%d“，</em>tpr）；</p>
 <p>指针与数组的关系：<br>int b[5];<br>int *btpr;</p>
 <p>btpr &#x3D; b;等效于btpr &#x3D; &amp;b[0];</p>
 <p>b[3] &#x3D; *(b  + 3) &#x3D; btpr[3] &#x3D; *(btpr +3)</p>
 <p>指针的运算应该在连续内存区（数组）中进行；<br>算数、比较、赋值运算；<br>指针运算偏移量：<br>                     例如：int <em>tpr，</em>tpr+1 后偏移量为sizeof（int）；</p>
 <p>指针比较</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/08/%E5%88%86%E4%BA%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="WeiHao">
-      <meta itemprop="description" content="不幻想，不做梦，就不必焦虑美梦成真。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蔚昊_4426">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/08/%E5%88%86%E4%BA%AB/" class="post-title-link" itemprop="url">分享</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-08 16:48:16" itemprop="dateCreated datePublished" datetime="2021-11-08T16:48:16+08:00">2021-11-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:40:19" itemprop="dateModified" datetime="2023-06-11T20:40:19+08:00">2023-06-11</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>标签: [游戏策划]<br>分类: [游戏策划]</p>
-<p>标志物设计：要在大范围内可见，并且给予玩家一定的引导。<br>引导线：可以在画面中用地形或物体边线、管道、线缆之类来引导玩家的前进方向，适合重新引导方向</p>
-<p>美术表现设计：<br>光线的从处理：玩家会对块状光源有探索欲望，用于引导。<br>场景的布置：过多的重复会让玩家下意识的注意该方向，有可能误导；地上的打光会让玩家注意到这个路。<br>动态、光效、细节：<br>用破碎的岩石壁提醒玩家“此处有东西”；<br>关于颜色和形状的设计，如绿色代表安全，……</p>
-<p>感官规则：感官规则最好符合玩家常识和游戏背景；要尽量给予正面反馈。但是它只能作为辅助信息，不能作为主线。</p>
 
       
     </div>
@@ -526,8 +491,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:20:47" itemprop="dateModified" datetime="2023-06-11T20:20:47+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:39:15" itemprop="dateModified" datetime="2023-06-11T21:39:15+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">游戏策划</span></a>
+                </span>
+            </span>
 
           
 
@@ -540,8 +514,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>tags: [游戏策划]<br>categories: [游戏策划]</p>
-<p>正好最近万圣节促销，买了人类一败涂地这款游戏，正在熟悉操作并过关，那就结合我游玩的过程说一下它的关卡设计吧。</p>
+          <p>正好最近万圣节促销，买了人类一败涂地这款游戏，正在熟悉操作并过关，那就结合我游玩的过程说一下它的关卡设计吧。</p>
 <p>首先，这款游戏的操作教学都是融入到前几个关卡的。新玩家在初次进入游戏时，直接控制一个小白人，然后依靠自己的经验去进行摁下开关、搬动箱子到开关上、拉下扳手等等操作。这些都是游戏的基本操作，玩家是完全可以根据自己的日常生活经验来推断出来的。</p>
 <p>然而，完成这些基础的教学关卡后，玩家会遭遇第一个难题：火车关（至少对于我是难题）。玩家需要爬上一个火车，然后一步步通过火车登上平台。对我来说，这一关有点复杂了。我甚至不清楚“将视角向下拉可以爬上平台”这样的基础操作（前面的关卡没教），这个关卡确实是一个难度的提升。当我查询百度上的教程，并最终通过捷径（翻墙）到达下一关时，我才获得了相关操作的知识。</p>
 <h3 id="第一关：豪宅"><a href="#第一关：豪宅" class="headerlink" title="第一关：豪宅"></a>第一关：豪宅</h3><p>第一关豪宅是新手引导关，关卡难度并不难。<br>在第一关中，玩家主要需要了解移动视角、按下按钮、以及使用黄色长方体来获取教学的各种简单操作。<br>关卡流程：</p>
@@ -639,75 +612,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 21:04:46" itemprop="dateModified" datetime="2023-06-11T21:04:46+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:37:01" itemprop="dateModified" datetime="2023-06-11T21:37:01+08:00">2023-06-11</time>
               </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h2 id="tags-游戏策划categories-游戏策划"><a href="#tags-游戏策划categories-游戏策划" class="headerlink" title="tags:- 游戏策划categories:- 游戏策划"></a>tags:<br>- 游戏策划<br>categories:<br>- 游戏策划</h2><p>做减法：游戏设计要以简洁为好，不要加入过多元素，把选择权交给玩家。</p>
-<p>只设计一个核心玩法，然后加入几个必要元素即可。此外，直观性也十分重要。最好让玩家可以直接看到游戏的目标和博弈，而不是需要介绍一堆新手难懂的规则。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="WeiHao">
-      <meta itemprop="description" content="不幻想，不做梦，就不必焦虑美梦成真。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蔚昊_4426">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/30/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">游戏设计</a>
-        </h2>
-
-        <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-30 19:09:43" itemprop="dateCreated datePublished" datetime="2021-10-30T19:09:43+08:00">2021-10-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">游戏策划</span></a>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:54:09" itemprop="dateModified" datetime="2023-06-11T20:54:09+08:00">2023-06-11</time>
-              </span>
+            </span>
 
           
 
@@ -721,18 +636,8 @@
 
       
           <hr>
-<p>title: photo<br>date: 2021-10-30 19:09:43</p>
-<p>tags: [游戏策划]<br>categories: [游戏策划]</p>
-<p>1：背景<br>宇宙由帝国统治了数百万年，在人工智能的帮助下，人类依靠空间折跃站技术占领了银河系。不过，当寿命与帝国一样长的皇帝雷托一世突然死亡后，整个银河陷入了混乱：人工智械纷纷关闭，依托它们的空间折跃站也都停转，一个个星球彼此间断开了联系……<br>756个银河标准年后，一个偏远的星系中的秘密克隆仓库内，全银河唯一一台未关闭的人工智械“伊甸”，唤醒了一个克隆体-爱达荷，并且告诉他，他的目的就是要回到帝国首都，找出一切混乱的根源。</p>
-<p>2：设定：<br>爱达荷：主角，记忆为空白，但始终坚持寻找大混乱的起因，并对帝国十分忠诚<br>伊甸：毒舌机器人，在游戏中类似向导作用，玩家也可以通过与它对话获取背景知识。<br>雷托一世：在人族内战时期依靠杰出的军事才能，从银河系外围一直攻到银河系中心星球（即现在的银河帝国首都“终点星”），并建立了银河帝国，依靠机械辅助技术统治了数百万年。<br>游戏中遇到的敌人：<br>   拾荒者：大混乱后受到核污染而出现的短命人类，极端好战。<br>   海盗：不用多说的吧<br>   教廷军队：狂热地拥护教皇，认为帝国军队是造成大混乱的起因，故而仇视主角。</p>
-<h2 id="3-游戏剧情-爱达荷从银河一条旋臂末端的克隆站中诞生，驾驶飞船一路向银河中心进发。一路上会遇到各种敌人及突发事件，并且会在事件结束后跳出背景故事。-随着主角渐渐接近银河帝国首都，接收的背景知识越来越与皇帝雷托一世相关。-当玩家修好最后一个空间折跃站，进入帝国首都“终点星”时，玩家会收到一段来自皇帝本人的遗留视频，具体内容：-银河中每天都有兆亿的事件发生……每天都有无数抉择要去判断。即使有智械的辅助，我的记忆体最终还是故障了。原来，那些太过久远的记忆，连智械都无法清除。-所以，我意识到，是时候换个人了。-我在银河系每条旋臂的末端都放置了一个克隆仓库，并秘密下令军方关闭所有智能机械……除了爱达荷们的“伊甸”。-为了数百万年的长治久安，七百多年的混乱不值一提。-当一个爱达荷最先到达终点星时，他的实力必然已经达到了我在人类时期的水平。其他爱达荷们会被销毁，而那个最先到达的，则会成为帝国的下一任皇帝……-所以恭喜你，爱达荷5号。你现在可以称自己为：雷托二世。-祝愿你的统治经久不衰。4-游戏玩法"><a href="#3-游戏剧情-爱达荷从银河一条旋臂末端的克隆站中诞生，驾驶飞船一路向银河中心进发。一路上会遇到各种敌人及突发事件，并且会在事件结束后跳出背景故事。-随着主角渐渐接近银河帝国首都，接收的背景知识越来越与皇帝雷托一世相关。-当玩家修好最后一个空间折跃站，进入帝国首都“终点星”时，玩家会收到一段来自皇帝本人的遗留视频，具体内容：-银河中每天都有兆亿的事件发生……每天都有无数抉择要去判断。即使有智械的辅助，我的记忆体最终还是故障了。原来，那些太过久远的记忆，连智械都无法清除。-所以，我意识到，是时候换个人了。-我在银河系每条旋臂的末端都放置了一个克隆仓库，并秘密下令军方关闭所有智能机械……除了爱达荷们的“伊甸”。-为了数百万年的长治久安，七百多年的混乱不值一提。-当一个爱达荷最先到达终点星时，他的实力必然已经达到了我在人类时期的水平。其他爱达荷们会被销毁，而那个最先到达的，则会成为帝国的下一任皇帝……-所以恭喜你，爱达荷5号。你现在可以称自己为：雷托二世。-祝愿你的统治经久不衰。4-游戏玩法" class="headerlink" title="3.游戏剧情   爱达荷从银河一条旋臂末端的克隆站中诞生，驾驶飞船一路向银河中心进发。一路上会遇到各种敌人及突发事件，并且会在事件结束后跳出背景故事。   随着主角渐渐接近银河帝国首都，接收的背景知识越来越与皇帝雷托一世相关。   当玩家修好最后一个空间折跃站，进入帝国首都“终点星”时，玩家会收到一段来自皇帝本人的遗留视频，具体内容：     银河中每天都有兆亿的事件发生……每天都有无数抉择要去判断。即使有智械的辅助，我的记忆体最终还是故障了。原来，那些太过久远的记忆，连智械都无法清除。     所以，我意识到，是时候换个人了。     我在银河系每条旋臂的末端都放置了一个克隆仓库，并秘密下令军方关闭所有智能机械……除了爱达荷们的“伊甸”。    为了数百万年的长治久安，七百多年的混乱不值一提。   当一个爱达荷最先到达终点星时，他的实力必然已经达到了我在人类时期的水平。其他爱达荷们会被销毁，而那个最先到达的，则会成为帝国的下一任皇帝……    所以恭喜你，爱达荷5号。你现在可以称自己为：雷托二世。     祝愿你的统治经久不衰。4.游戏玩法"></a>3.游戏剧情<br>   爱达荷从银河一条旋臂末端的克隆站中诞生，驾驶飞船一路向银河中心进发。一路上会遇到各种敌人及突发事件，并且会在事件结束后跳出背景故事。<br>   随着主角渐渐接近银河帝国首都，接收的背景知识越来越与皇帝雷托一世相关。<br>   当玩家修好最后一个空间折跃站，进入帝国首都“终点星”时，玩家会收到一段来自皇帝本人的遗留视频，具体内容：<br>     银河中每天都有兆亿的事件发生……每天都有无数抉择要去判断。即使有智械的辅助，我的记忆体最终还是故障了。原来，那些太过久远的记忆，连智械都无法清除。<br>     所以，我意识到，是时候换个人了。<br>     我在银河系每条旋臂的末端都放置了一个克隆仓库，并秘密下令军方关闭所有智能机械……除了爱达荷们的“伊甸”。<br>    为了数百万年的长治久安，七百多年的混乱不值一提。<br>   当一个爱达荷最先到达终点星时，他的实力必然已经达到了我在人类时期的水平。其他爱达荷们会被销毁，而那个最先到达的，则会成为帝国的下一任皇帝……<br>    所以恭喜你，爱达荷5号。你现在可以称自己为：雷托二世。<br>     祝愿你的统治经久不衰。<br>4.游戏玩法</h2><p><img src="/images/pasted-17.png" alt="upload successful"></p>
-<hr>
-<p>左下为玩家出生点。四角星为星系，只能从一个星系通过折跃站跳到相邻星系。五角星为终点星。<br>游戏玩法可以类似于“哀恸之日”的战棋类</p>
-<hr>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/pasted-16.png" alt="upload successful"></h2><pre><code>  某些星系中有维修站，玩家可以在里面购买战斗机或是进行维修。
-  在战斗中，通过用战斗机在棋盘上移动到敌舰旁边，攻击敌舰来获得胜利。
-</code></pre>
-<p>完<br>参考：哀恸之日、沙丘、银河帝国、群星、视界线</p>
+<p>做减法：游戏设计要以简洁为好，不要加入过多元素，把选择权交给玩家。</p>
+<p>只设计一个核心玩法，然后加入几个必要元素即可。此外，直观性也十分重要。最好让玩家可以直接看到游戏的目标和博弈，而不是需要介绍一堆新手难懂的规则。</p>
 
       
     </div>
@@ -783,8 +688,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 20:50:31" itemprop="dateModified" datetime="2023-06-11T20:50:31+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:37:59" itemprop="dateModified" datetime="2023-06-11T21:37:59+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">游戏策划</span></a>
+                </span>
+            </span>
 
           
 
@@ -798,7 +712,6 @@
 
       
           <hr>
-<p>tags: [游戏策划]<br>categories: [游戏策划]</p>
 <p><img src="/images/pasted-1.png" alt="upload successful"></p>
 <p><img src="/images/pasted-2.png" alt="upload successful"></p>
 <p><img src="/images/pasted-3.png" alt="upload successful"></p>
@@ -864,8 +777,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 21:05:25" itemprop="dateModified" datetime="2023-06-11T21:05:25+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 21:40:20" itemprop="dateModified" datetime="2023-06-11T21:40:20+08:00">2023-06-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
 
           
 
@@ -878,8 +800,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="tags-其他categories-其他"><a href="#tags-其他categories-其他" class="headerlink" title="tags:- 其他categories:- 其他"></a>tags:<br>- 其他<br>categories:<br>- 其他</h2><h3 id="读书笔记"><a href="#读书笔记" class="headerlink" title="读书笔记"></a>读书笔记</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="x3D-x3D-如何阅读一本书-x3D-x3D"><a href="#x3D-x3D-如何阅读一本书-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;如何阅读一本书&#x3D;&#x3D;"></a>&#x3D;&#x3D;如何阅读一本书&#x3D;&#x3D;</h1><h2 id="第一章-阅读的活力与艺术"><a href="#第一章-阅读的活力与艺术" class="headerlink" title="第一章 阅读的活力与艺术"></a>第一章 阅读的活力与艺术</h2><ul>
+          <h3 id="读书笔记"><a href="#读书笔记" class="headerlink" title="读书笔记"></a>读书笔记</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="x3D-x3D-如何阅读一本书-x3D-x3D"><a href="#x3D-x3D-如何阅读一本书-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;如何阅读一本书&#x3D;&#x3D;"></a>&#x3D;&#x3D;如何阅读一本书&#x3D;&#x3D;</h1><h2 id="第一章-阅读的活力与艺术"><a href="#第一章-阅读的活力与艺术" class="headerlink" title="第一章 阅读的活力与艺术"></a>第一章 阅读的活力与艺术</h2><ul>
     <li>阅读的目标：为获得资讯而读，以及为求得理解而读</li>
     <li>第一，阅读可以是一件多少主动的事。第二，阅读越主动，效果越好。</li>
     <li> 阅读的目标：为获得资讯而读，以及为求得理解而读
@@ -1085,11 +1006,73 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/28/%E8%94%9A%E6%98%8A4426/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WeiHao">
+      <meta itemprop="description" content="不幻想，不做梦，就不必焦虑美梦成真。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔚昊_4426">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/28/%E8%94%9A%E6%98%8A4426/" class="post-title-link" itemprop="url">蔚昊4426</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-28 18:12:27" itemprop="dateCreated datePublished" datetime="2021-10-28T18:12:27+08:00">2021-10-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-11 20:33:01" itemprop="dateModified" datetime="2023-06-11T20:33:01+08:00">2023-06-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我叫蔚昊，四千四百二十六号。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1156,9 +1139,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
